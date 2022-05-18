@@ -18,22 +18,31 @@ app = Flask(__name__)
 def simple(): 
     return render_template("fxcalculator.html") 
 
-with open('FX.csv', newline='') as csvfile:
-    reader = csv.DictReader(csvfile, delimiter =";") # mam już ściągnięte dane wg klucza bid # ODCZYT Z PLIKU CSV : https://www.youtube.com/watch?v=Z8HIhI-FZvg
-    for row in reader:
-        print(row['code'], row['bid'])
+#with open('FX.csv', newline='') as csvfile:
+#    reader = csv.DictReader(csvfile, delimiter =";") 
+#    for row in reader:
+#        print(row['code'], row['bid'])
 
 
 @app.route("/calculate", methods=["post"]) 
 def calculate():
     currency_type=request.form["currencyType"]
     currency_amount = int(request.form["currencyAmount"])  
-    if currency_type=="dolar amerykański": 
-        result=currency_amount*10
-    elif currency_type=="euro":
-        result=currency_amount*50 
-    else:
-        return "There is an error"
+    with open('FX.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile, delimiter =";") 
+        for row in reader:
+            if row['currency']== currency_type:
+                course = row['bid']
+                result=course*currency_amount
+            else:
+                return "There is an error"
+    
+# if currency_type=="dolar amerykański": 
+#        result=currency_amount*10
+#    elif currency_type=="euro":
+#        result=currency_amount*50
+#    else:
+#        return "There is an error"
     return render_template("fxcalculator.html", result=result)
 
 
@@ -42,7 +51,7 @@ def calculate():
 if __name__ == '__main__':  
     app.run(debug=True) 
 
-# TERAZ jak pobrać dane z csv  DO ZMIENNEJ  10/50
+
 
 
 
