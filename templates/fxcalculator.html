@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<form action="{{url_for('calculate')}}", method="post">    
+  <div>
+    <label for="currency">Choose a currency:</label>
+      <select name="currencyType" id="selectCurrency">
+        <option value="dolar amerykański">USD</option>
+        <option value="dolar australijski">AUD</option>
+        <option value="dolar kanadyjski">CAD</option>
+        <option value="euro">EUR</option>
+        <option value="forint (Węgry)">HUF</option>
+        <option value="frank szwajcarski">CHF</option>
+        <option value="funt szterling">GBP</option>
+        <option value="jen (Japonia)">JPY</option>
+        <option value="korona czeska">CZK</option>
+        <option value="korona duńska">DKK</option>
+        <option value="korona norweska">NOK</option>
+        <option value="korona szwedzka">SEK</option>
+      <option value="SDR (MFW)">SDR</option>
+    </select>
+  </div>
+  <div>
+    <label>Currency amount</label>
+    <input type="number" name="currencyAmount" placeholder="Insert currency amount" required/>
+  </div> 
+  <div>    
+      <input type="submit" value="calculate"/>
+  </div>
+  
+  <div>
+    <label>Buy value:</label>
+    <input type="text" placeholder="Buy value:" value={{result}}>
+  </div>
+
+        
+</form>
+
+</body>
+</html>
