@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
 <body>
+<head>
+    <meta charset="utf-8">
+    <title>Fx Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 
-
+<h1>Fx Calculator</h1>
 
 <form action="{{url_for('calculate')}}", method="post">    
   <div>
     <label for="currency">Choose a currency:</label>
-      <select name="currencyType" id="selectCurrency">
+      <select class="banner" name="currencyType" id="selectCurrency">
         <option value="dolar amerykański">USD</option>
         <option value="dolar australijski">AUD</option>
         <option value="dolar kanadyjski">CAD</option>
@@ -22,10 +27,10 @@
         <option value="korona szwedzka">SEK</option>
       <option value="SDR (MFW)">SDR</option>
     </select>
-  </div>
+  </div><br>
   <div>
-    <label>Currency amount</label>
-    <input type="number" name="currencyAmount" placeholder="Insert currency amount" required/>
+    <label>Currency amount:</label>
+    <input class="banner" type="number" name="currencyAmount" placeholder="Insert currency amount" required/>
   </div> 
   <div>    
       <input type="submit" value="calculate"/>
@@ -33,7 +38,7 @@
   
   <div>
     <label>Buy value:</label>
-    <input type="text" placeholder="Buy value:" value={{result}}>
+    <input class="banner" type="text" placeholder="Buy value:" value={{result}}>
   </div>
 
         

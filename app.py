@@ -26,25 +26,24 @@ def simple():
 
 @app.route("/calculate", methods=["post"]) 
 def calculate():
-    currency_type=request.form["currencyType"]
-    currency_amount = int(request.form["currencyAmount"])  
+    currency_type = request.form["currencyType"]
+    currency_amount = int(request.form["currencyAmount"]) 
     with open('FX.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile, delimiter =";") 
         for row in reader:
-            if row['currency']== currency_type:
-                course = row['bid']
+            if row['currency']==currency_type:
+                course = int(row['bid'])
                 result=course*currency_amount
             else:
                 return "There is an error"
-    
+    return render_template("fxcalculator.html", result=result)
+
 # if currency_type=="dolar amerykański": 
 #        result=currency_amount*10
 #    elif currency_type=="euro":
 #        result=currency_amount*50
 #    else:
 #        return "There is an error"
-    return render_template("fxcalculator.html", result=result)
-
 
 
 

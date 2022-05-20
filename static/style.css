@@ -1,0 +1,11 @@
+h1 {
+    font: strong;
+    font-size: 50px;
+    background: blue;
+    text-align: center;
+}
+
+.banner {
+    font-size: 20px;
+    text-align: center;
+}
