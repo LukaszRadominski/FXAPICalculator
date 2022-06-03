@@ -12,6 +12,10 @@ d_data = data[0] # wybór pierwszego elementu z listy tj słownika
   
 rates_list=d_data['rates'] # wybór wartośći z ww słownika wg klucza rates
 
+for i in rates_list:
+    dict = i
+    print(dict)
+
 # utworzenie pliku csv
 with open('FX.csv', 'w', newline='') as csvfile:
     fieldnames = ['currency', 'code', 'bid','ask'] 
